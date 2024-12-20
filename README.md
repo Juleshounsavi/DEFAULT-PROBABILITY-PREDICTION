@@ -1,1 +1,8 @@
-Le but de ce projet est de réaliser un modèle de probabilité de défaut qui prédit si un individu sera en défaut de paiement dans les deux prochaines années en fonction des caractéristiques financières et personnelles fournies. 
+# Application Web : Prédiction de la Probabilité de Défaut de Prêts
+Ce projet est une application web qui prédit la probabilité de défaut de prêts en utilisant le jeu de données "Give Me Some Credit". Elle offre aux utilisateurs une interface simple pour saisir des données d'emprunteurs et recevoir des prédictions en temps réel.
+
+## Contributeurs
+- **Hounsavi Jules Koffi**
+- **TARDANE Hafsa**  
+
+ 
