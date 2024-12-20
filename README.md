@@ -1,0 +1,1 @@
+Le but de ce projet est de réaliser un modèle de probabilité de défaut qui prédit si un individu sera en défaut de paiement dans les deux prochaines années en fonction des caractéristiques financières et personnelles fournies. 
