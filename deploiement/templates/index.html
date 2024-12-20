@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prédiction de Défaillance Client</title>
+  <!-- Importation de la police Neue Machina -->
+  <link href="https://fonts.googleapis.com/css2?family=Neue+Machina&display=swap" rel="stylesheet">
+
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <style>
+    body {
+      font-family: 'Arimo', sans-serif;
+      background-color: #2C3E50;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    /* Espacement avant le titre */
+    .header-spacing {
+      margin-top: 8cm; /* Espacement de 2 cm avant le titre */
+    }
+    
+
+    h1, h2 {
+      font-family: 'Neue Machina', sans-serif; /* Application de la police Neue Machina */
+      text-align: center; /* Centrer le texte */
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 24px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 600px;
+      background-color: #34495E;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    input {
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ECF0F1;
+      color: #2C3E50;
+    }
+
+    button {
+      background-color: #3498DB;
+      color: white;
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #2980B9;
+    }
+
+    .prediction {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #F39C12;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      .container {
+        padding: 10px;
+      }
+      form {
+        max-width: 90%;
+      }
+      input {
+        font-size: 14px;
+        padding: 10px;
+      }
+      button {
+        font-size: 16px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header-spacing">
+      <h1>APPLICATION DE CALCUL DE PROBABILITÉ DE DÉFAUT</h1>
+      <h2>Entrez les données du client dans les champs suivants:</h2>
+    </div>
+
+    <form action="{{ url_for('predict') }}" method="post">
+      <input type="number" step="any" name="RevolvingUtilizationOfUnsecuredLines" placeholder="Utilisation des lignes de crédit" required="required" />
+      <input type="number" step="any" name="age" placeholder="Âge du client" required="required" />
+      <input type="number" step="any" name="NumberOfTime30-59DaysPastDueNotWorse" placeholder="Retards de 30-59 jours (pas pire)" required="required" />
+      <input type="number" step="any" name="DebtRatio" placeholder="Ratio d'endettement" required="required" />
+      <input type="number" step="any" name="MonthlyIncome" placeholder="Revenu Mensuel" required="required" />
+      <input type="number" step="any" name="NumberOfOpenCreditLinesAndLoans" placeholder="Nombre de lignes de crédit et prêts ouverts" required="required" />
+      <input type="number" step="any" name="NumberOfTimes90DaysLate" placeholder="Retards de 90 jours" required="required" />
+      <input type="number" step="any" name="NumberRealEstateLoansOrLines" placeholder="Prêts immobiliers ou lignes" required="required" />
+      <input type="number" step="any" name="NumberOfTime60-89DaysPastDueNotWorse" placeholder="Retards de 60-89 jours (pas pire)" required="required" />
+      <input type="number" step="any" name="NumberOfDependents" placeholder="Nombre de dépendants" required="required" />
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Prédire</button>
+    </form>
+
+    <div class="prediction">
+      {{ prediction_text }}
+    </div>
+  </div>
+</body>
+</html>
