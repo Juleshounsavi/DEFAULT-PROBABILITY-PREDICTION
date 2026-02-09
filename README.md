@@ -4,5 +4,3 @@ Ce projet est une application web qui prédit la probabilité de défaut de prê
 ### Contributeurs
 - **HOUNSAVI Jules Koffi**
 - **TARDANE Hafsa**  
-
- 
